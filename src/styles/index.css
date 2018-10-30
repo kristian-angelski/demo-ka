@@ -7,7 +7,7 @@
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    background: cornsilk;
+    background: rgb(247, 246, 242);
     color: #333;
   }
   
@@ -19,7 +19,7 @@
     padding: 10px;
     border-radius: 5px;
     display: inline-block;
-    background: steelblue;
+    background: rgb(6, 40, 68);
     color: white;
     font-size: 12px;
     font-weight: bold;
