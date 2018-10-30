@@ -1,11 +1,16 @@
-import '../styles/index.scss';
+// import '../styles/index.scss';
 import '../styles/index.css';
-
-// console.log('webpack starterkit');
-var ShoppingCart = (function ($) {
+import cart from  '../templates/products.html';
+// console.log(cart);
+var ShoppingCart = (function () {
   'use strict';
-
   // Get necesarry DOM Elements
+  // var shopCart = document.querySelector('.cart');
+  // var content = document.querySelector('.container');
+  // shopCart.addEventListener('click', function() {
+  //   content.innerHTML = cart;
+  // });
+
   var productsEl = document.querySelector('.products'),
     cartEl = document.querySelector('.shopping-cart-list'),
     productQuantityEl = document.querySelector('.product-quantity'),
@@ -13,6 +18,8 @@ var ShoppingCart = (function ($) {
     cartCheckoutEl = document.querySelector('.cart-checkout'),
     totalPriceEl = document.querySelector('.total-price');
 
+  // Show cart when cart button is pressed
+  
   // Fake JSON data array here should be API call
   var products = [{
         id: 0,
