@@ -1,28 +1,33 @@
-// import '../styles/index.scss';
 import '../styles/index.css';
-import cart from '../templates/products.html';
-// console.log(cart);
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min.js';
+
 (function () {
   let products = document.querySelector('.products');
-  let cartBtn = document.querySelector('.cart');
   let cart = document.querySelector('.shopping-cart');
+  let productsBtn = document.querySelector('.products-btn');
+  let cartBtn = document.querySelector('.cart-btn');
 
   cartBtn.addEventListener('click', function () {
-    products.classList.toggle('hidden');
     cart.classList.toggle('hidden');
+    if (!(products.classList.contains('hidden'))) {
+      products.classList.toggle('hidden');
+    }
+  });
+
+  productsBtn.addEventListener('click', function () {
+    products.classList.toggle('hidden');
+    if (!(cart.classList.contains('hidden'))) {
+      cart.classList.toggle('hidden');
+    }
   });
 
 })();
 
 var ShoppingCart = (function () {
   'use strict';
-  // Get necesarry DOM Elements
-  // var shopCart = document.querySelector('.cart');
-  // var content = document.querySelector('.container');
-  // shopCart.addEventListener('click', function() {
-  //   content.innerHTML = cart;
-  // });
 
+  // Get necesarry DOM Elements
   var productsEl = document.querySelector('.products'),
     cartEl = document.querySelector('.shopping-cart-list'),
     productQuantityEl = document.querySelector('.product-quantity'),
@@ -74,6 +79,20 @@ var ShoppingCart = (function () {
         description: 'macbook air12 desc',
         imageUrl: 'url/macbook-air12',
         price: 499
+      },
+      {
+        id: 5,
+        name: 'Macbook Air 2012',
+        description: 'macbook air12 desc',
+        imageUrl: 'url/macbook-air12',
+        price: 499
+      },
+      {
+        id: 5,
+        name: 'Macbook Air 2012',
+        description: 'macbook air12 desc',
+        imageUrl: 'url/macbook-air12',
+        price: 499
       }
     ],
     productsInCart = [];
@@ -83,18 +102,20 @@ var ShoppingCart = (function () {
     products.forEach(function (item) {
       var productEl = document.createElement('div');
       productEl.className = 'product';
-      productEl.innerHTML = `<div class="product-image">
-                                  <img src="${item.imageUrl}" alt="${item.name}">
-                               </div>
-                               <div class="product-name"><span>Product:</span> ${item.name}</div>
-                               <div class="product-description"><span>Description:</span> ${item.description}</div>
-                               <div class="product-price"><span>Price:</span> ${item.price} $</div>
-                               <div class="product-add-to-cart">
-                                 <a href="#0" class="button see-more">More Details</a>
-                                 <a href="#0" class="button add-to-cart" data-id=${item.id}>Add to Cart</a>
-                               </div>
-                            </div>
-  `;
+      productEl.innerHTML = `    <div class="card">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                      <img class="activator" src="${item.imgUrl}">
+                                  </div>
+                                  <div class="card-content">
+                                      <span class="card-title activator grey-text text-darken-4">${item.name} - $${item.price}<i class="material-icons right">more_vert</i></span>
+                                      <p><a href="#" class="button add-to-cart" data-id=${item.id}>Add to Cart</a></p>
+                                  </div>
+                                  <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">${item.name}<i class="material-icons right">close</i></span>
+                                      <p>Description: ${item.description}</p>
+                                  </div>
+                              </div>
+                            </div>`;
 
       productsEl.appendChild(productEl);
     });

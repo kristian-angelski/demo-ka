@@ -4,24 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>simple store</title>
 </head>
 
 <body>
   <div class="container">
     <header class="header">
-      <h3 class="header-logo">Simple Store</h3>
-
-      <nav class="header-nav">
-        <ul>
-          <li><a href="#0">Home</a></li>
-          <li><a href="#0">Products</a></li>
-          <li><a class="cart" href="#0">Cart</a></li>
-        </ul>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Simple Store</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Home</a></li>
+            <li><a href="#" class="products-btn">Products</a></li>
+            <li><a href="#" class="cart-btn"><i class="material-icons">shopping_cart</i></a></li>
+          </ul>
+        </div>
       </nav>
     </header>
 
-    <div class="products">
+    <div class="products hidden">
     </div><!-- products -->
     <div class="shopping-cart hidden">
       <div class="shopping-cart-head">
