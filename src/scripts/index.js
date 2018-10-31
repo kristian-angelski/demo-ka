@@ -1,7 +1,19 @@
 // import '../styles/index.scss';
 import '../styles/index.css';
-import cart from  '../templates/products.html';
+import cart from '../templates/products.html';
 // console.log(cart);
+(function () {
+  let products = document.querySelector('.products');
+  let cartBtn = document.querySelector('.cart');
+  let cart = document.querySelector('.shopping-cart');
+
+  cartBtn.addEventListener('click', function () {
+    products.classList.toggle('hidden');
+    cart.classList.toggle('hidden');
+  });
+
+})();
+
 var ShoppingCart = (function () {
   'use strict';
   // Get necesarry DOM Elements
@@ -19,7 +31,7 @@ var ShoppingCart = (function () {
     totalPriceEl = document.querySelector('.total-price');
 
   // Show cart when cart button is pressed
-  
+
   // Fake JSON data array here should be API call
   var products = [{
         id: 0,
