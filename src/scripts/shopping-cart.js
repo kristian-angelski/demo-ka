@@ -1,3 +1,5 @@
+import productsArr from './products.js';
+
 var shoppingCart = (function () {
   'use strict';
 
@@ -8,68 +10,10 @@ var shoppingCart = (function () {
     emptyCartEl = document.querySelector('.empty-cart-btn'),
     cartCheckoutEl = document.querySelector('.cart-checkout'),
     totalPriceEl = document.querySelector('.total-price');
-  var countElement = document.querySelector('.badge');
+  var countElement = document.querySelector('.cart-sel');
   var counter = 0;
   var productsInCart = [];
-
-  // Fake JSON data array here should be API call
-  var products = [{
-      id: 0,
-      name: 'iPhone 6S',
-      description: 'ip6s desc',
-      imageUrl: 'url/ip6s',
-      price: 799
-    },
-    {
-      id: 1,
-      name: 'iPhone 5S',
-      description: 'ip5s desc',
-      imageUrl: 'url/ip5s',
-      price: 349,
-    },
-    {
-      id: 2,
-      name: 'Macbook',
-      description: 'macbook desc',
-      imageUrl: 'url/macbook',
-      price: 1499
-    },
-    {
-      id: 3,
-      name: 'Macbook Air',
-      description: 'macbook air desc',
-      imageUrl: 'url/macbookAir',
-      price: 999
-    },
-    {
-      id: 4,
-      name: 'Macbook Air 2013',
-      description: 'macbook air13 desc',
-      imageUrl: 'url/macbook-air13',
-      price: 599
-    },
-    {
-      id: 5,
-      name: 'Macbook Air 2012',
-      description: 'macbook air12 desc',
-      imageUrl: 'url/macbook-air12',
-      price: 499
-    },
-    {
-      id: 5,
-      name: 'Macbook Air 2012',
-      description: 'macbook air12 desc',
-      imageUrl: 'url/macbook-air12',
-      price: 499
-    },
-    {
-      id: 5,
-      name: 'Macbook Air 2012',
-      description: 'macbook air12 desc',
-      imageUrl: 'url/macbook-air12',
-      price: 499
-    }
-  ];
+  var products = productsArr;
 
   // Creating div element for each obj element in the array
   var generateProductList = function () {
@@ -78,7 +22,7 @@ var shoppingCart = (function () {
       productEl.className = 'product';
       productEl.innerHTML = `    <div class="card">
                                     <div class="card-image waves-effect waves-block waves-light">
-                                        <img class="activator" src="${item.imgUrl}">
+                                        <img class="activator" src="${item.imageUrl}">
                                     </div>
                                     <div class="card-content">
                                         <span class="card-title activator grey-text text-darken-4">${item.name} - $${item.price}<i class="material-icons right">more_vert</i></span>
@@ -102,8 +46,8 @@ var shoppingCart = (function () {
       var li = document.createElement('li');
       li.innerHTML = `${item.quantity} ${item.product.name} - $${item.product.price * item.quantity}`;
       cartEl.appendChild(li);
+      countElement.classList.add('badge');
     });
-
     countElement.setAttribute('data-count', counter);
     productQuantityEl.innerHTML = counter;
     generateCartButtons();
@@ -136,6 +80,7 @@ var shoppingCart = (function () {
       if (confirm('Are you sure?')) {
         productsInCart = [];
         counter = 0;
+        countElement.classList.remove('badge');
         countElement.setAttribute('data-count', counter);
       }
       generateCartList();

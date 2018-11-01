@@ -55,6 +55,11 @@ a {
   background: azure;
 }
 
+.card-image {
+  height: 250px;
+  overflow: hidden;
+}
+
 .shopping-cart-head {
   display: inline-block;
   background: steelblue;
@@ -91,7 +96,7 @@ i {
   position: relative;
 }
 
-.badge:after {
+.badge::after {
   content: attr(data-count);
   position: absolute;
   background: #ff6600;
