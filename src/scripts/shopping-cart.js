@@ -20,20 +20,21 @@ var shoppingCart = (function () {
     products.forEach(function (item) {
       var productEl = document.createElement('div');
       productEl.className = 'product';
-      productEl.innerHTML = `    <div class="card hoverable">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                        <img class="activator" src="${item.imageUrl}">
-                                    </div>
-                                    <div class="card-content">
-                                        <span class="card-title activator grey-text text-darken-4">${item.name} - $${item.price}<i class="material-icons right">more_vert</i></span>
-                                        <p><a href="#" onclick="M.toast({html: 'Product added'})" class="waves-effect waves-light btn add-to-cart" data-id=${item.id}>buy</a></p>
-                                    </div>
-                                    <div class="card-reveal">
-                                        <span class="card-title grey-text text-darken-4">${item.name}<i class="material-icons right">close</i></span>
-                                        <p>Description: ${item.description}</p>
-                                    </div>
-                                </div>
-                              </div>`;
+      productEl.innerHTML = ` 
+         <div class="card hoverable">
+          <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="${item.imageUrl}">
+          </div>
+          <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">${item.name} - $${item.price}<i class="material-icons right">more_vert</i></span>
+              <p><a href="#" onclick="M.toast({html: 'Product added'})" class="waves-effect waves-light btn add-to-cart" data-id=${item.id}>buy</a></p>
+          </div>
+          <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">${item.name}<i class="material-icons right">close</i></span>
+              <p>Description: ${item.description}</p>
+          </div>
+      </div>
+    </div>`;
 
       productsEl.appendChild(productEl);
     });
@@ -43,10 +44,15 @@ var shoppingCart = (function () {
   var generateCartList = function () {
     cartEl.innerHTML = '';
     productsInCart.forEach(function (item) {
-      var li = document.createElement('li');
-      li.className = 'collection-item';
-      li.innerHTML = `<span class="product-quantity">${item.quantity}</span> - <span class="product-name">${item.product.name}</span> - <span class="product-total">$${item.product.price * item.quantity}</span><span class="product-remove"><i class="material-icons">clear</i></span>`;
-      cartEl.appendChild(li);
+      var tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${item.product.name}</td>
+        <td>$${item.product.price}</td>
+        <td>$${item.product.price * item.quantity}</td>
+        <td><a href="#"><i class="material-icons remove-btn">remove</i></a>${item.quantity}<a href="#"><i class="material-icons add-btn">add</i></a></td>
+        <td><a href="#"><i class="material-icons clear-btn">clear</i></a></td>
+      `;
+      cartEl.appendChild(tr);
       countElement.classList.add('badge');
     });
     countElement.setAttribute('data-count', counter);

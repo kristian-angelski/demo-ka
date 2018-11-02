@@ -13,10 +13,11 @@
     <header class="header">
       <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Simple Store</a>
+          <a href="#" class="brand-logo"><i class="material-icons">fingerprint</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down nav-btns">
             <li><a href="#">Home</a></li>
             <li><a href="#" class="products-btn">Products</a></li>
+            <li><a href="#">Contacts</a></li>
             <li><a href="#" class="cart-btn"><i class="material-icons cart-sel">shopping_cart</i></a></li>
           </ul>
         </div>
@@ -29,8 +30,19 @@
       <div class="shopping-cart-head">
         <span class="product-quantity">0</span> Product(s) in Cart
       </div>
-      <ul class="collection shopping-cart-list">
-      </ul>
+      <table class="highlight centered">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Total price</th>
+            <th>Quantity</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody class="shopping-cart-list">
+        </tbody>
+      </table>
       <div class="cart-buttons">
         <a href="#0" class="waves-effect waves-light btn empty-cart-btn">Empty</a>
         <a href="#0" class="waves-effect waves-light btn cart-checkout">Checkout - <span class="total-price">$0</span></a>

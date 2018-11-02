@@ -28,7 +28,7 @@ export default [{
   },
   {
     id: 2,
-    name: 'iphone X',
+    name: 'iPhone X',
     description: 'Super Retina HD display. 5.8-inch (diagonal) all-screen OLED Multi‑Touch display',
     imageUrl: xImage,
     price: 899
