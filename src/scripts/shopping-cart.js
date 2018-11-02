@@ -1,24 +1,24 @@
 import productsArr from './products.js';
 
-var shoppingCart = (function () {
+let shoppingCart = (function () {
   'use strict';
 
   // Get necesarry DOM Elements / initialize needed variables
-  var productsEl = document.querySelector('.products'),
+  let productsEl = document.querySelector('.products'),
     cartEl = document.querySelector('.shopping-cart-list'),
     productQuantityEl = document.querySelector('.product-quantity'),
     emptyCartEl = document.querySelector('.empty-cart-btn'),
     cartCheckoutEl = document.querySelector('.cart-checkout'),
     totalPriceEl = document.querySelector('.total-price');
-  var countElement = document.querySelector('.cart-sel');
-  var counter = 0;
-  var productsInCart = [];
-  var products = productsArr;
+  let countElement = document.querySelector('.cart-sel');
+  let counter = 0;
+  let productsInCart = [];
+  let products = productsArr;
 
   // Creating div element for each obj element in the array
-  var generateProductList = function () {
+  let generateProductList = function () {
     products.forEach(function (item) {
-      var productEl = document.createElement('div');
+      let productEl = document.createElement('div');
       productEl.className = 'product';
       productEl.innerHTML = ` 
          <div class="card hoverable">
@@ -41,27 +41,29 @@ var shoppingCart = (function () {
   };
 
   // Like one before and I have also used ES6 template strings
-  var generateCartList = function () {
+  let generateCartList = function () {
     cartEl.innerHTML = '';
+    // console.log(productsInCart);
     productsInCart.forEach(function (item) {
-      var tr = document.createElement('tr');
+      let tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${item.product.name}</td>
         <td>$${item.product.price}</td>
         <td>$${item.product.price * item.quantity}</td>
-        <td><a href="#"><i class="material-icons remove-btn">remove</i></a>${item.quantity}<a href="#"><i class="material-icons add-btn">add</i></a></td>
-        <td><a href="#"><i class="material-icons clear-btn">clear</i></a></td>
+        <td><a href="#"><i class="material-icons remove-btn" onClick="reduceItemCount(${item.product.id})">remove</i></a>${item.quantity}<a href="#"><i class="material-icons add-btn" onClick="increaseItemCount(${item.product.id})">add</i></a></td>
+        <td><a href="#"><i class="material-icons clear-btn" onClick="removeAll(${item.product.id})">clear</i></a></td>
       `;
       cartEl.appendChild(tr);
       countElement.classList.add('badge');
     });
+    
     countElement.setAttribute('data-count', counter);
     productQuantityEl.innerHTML = counter;
     generateCartButtons();
   };
 
   // Function that generates Empty Cart and Checkout buttons based on condition that checks if productsInCart array is empty
-  var generateCartButtons = function () {
+  let generateCartButtons = function () {
     if (productsInCart.length > 0) {
       emptyCartEl.style.display = 'inline-block';
       cartCheckoutEl.style.display = 'inline-block';
@@ -73,11 +75,11 @@ var shoppingCart = (function () {
   };
 
   // Setting up listeners for click event on all products and Empty Cart button as well
-  var setupListeners = function () {
+  let setupListeners = function () {
     productsEl.addEventListener('click', function (event) {
-      var el = event.target;
+      let el = event.target;
       if (el.classList.contains('add-to-cart')) {
-        var elId = el.dataset.id;
+        let elId = el.dataset.id;
         counter++;
         addToCart(elId);
       }
@@ -95,8 +97,8 @@ var shoppingCart = (function () {
   };
 
   // Adds new items or updates existing one in productsInCart array
-  var addToCart = function (id) {
-    var obj = products[id];
+  let addToCart = function (id) {
+    let obj = products[id];
     if (productsInCart.length === 0 || productFound(obj.id) === undefined) {
       productsInCart.push({
         product: obj,
@@ -113,21 +115,74 @@ var shoppingCart = (function () {
   };
 
   // This function checks if product is already in productsInCart array
-  var productFound = function (productId) {
+  let productFound = function (productId) {
     return productsInCart.find(function (item) {
       return item.product.id === productId;
     });
   };
 
   // This function calculates the total prices of all products
-  var calculateTotalPrice = function () {
+  let calculateTotalPrice = function () {
     return productsInCart.reduce(function (total, item) {
       return total + (item.product.price * item.quantity);
     }, 0);
   };
 
+  // // Functions called from cart
+  // // Removing one item when '-' gets clicked
+  let reduceItemCount = function (id) {
+    let rmvBtn = document.querySelector('.remove-btn');
+
+    for (let i = 0; i < productsInCart.length; i++) {
+      if (productsInCart[i].product.id === id) {
+        productsInCart[i].quantity--;
+        counter--;
+        if (productsInCart[i].quantity === 0) {
+          productsInCart.splice(i, 1);
+          if ( counter === 0 ) {
+            countElement.classList.remove('badge');
+          }
+        }
+      }
+      generateCartList();
+    }
+  };
+  window.reduceItemCount = reduceItemCount;
+
+  // Adding one item when '+' gets clicked
+  let increaseItemCount = (function (id) {
+    let addBtn = document.querySelector('.add-btn');
+
+    for (let i = 0; i < productsInCart.length; i++) {
+      if (productsInCart[i].product.id === id) {
+        productsInCart[i].quantity++;
+        counter++;
+      }
+      generateCartList();
+    }
+  });
+  window.increaseItemCount = increaseItemCount;
+
+  // Removing all items of a kind when 'x" gets clicked
+  let removeAll = function (id) {
+    let clearBtn = document.querySelector('.clear-btn');
+
+    for (let i = 0; i < productsInCart.length; i++) {
+      if (productsInCart[i].product.id === id) {
+        let removeFromCounter = productsInCart[i].quantity;
+        counter -= removeFromCounter;
+        productsInCart.splice(i, 1);
+        if ( counter === 0 ) {
+          countElement.classList.remove('badge');
+        }
+      }
+      generateCartList();
+    }
+  };
+  window.removeAll = removeAll;
+
   // This functon starts the application
-  var init = function () {
+  let init = function () {
     generateProductList();
     setupListeners();
   };
