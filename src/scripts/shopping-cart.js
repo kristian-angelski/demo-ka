@@ -20,13 +20,13 @@ var shoppingCart = (function () {
     products.forEach(function (item) {
       var productEl = document.createElement('div');
       productEl.className = 'product';
-      productEl.innerHTML = `    <div class="card">
+      productEl.innerHTML = `    <div class="card hoverable">
                                     <div class="card-image waves-effect waves-block waves-light">
                                         <img class="activator" src="${item.imageUrl}">
                                     </div>
                                     <div class="card-content">
                                         <span class="card-title activator grey-text text-darken-4">${item.name} - $${item.price}<i class="material-icons right">more_vert</i></span>
-                                        <p><a href="#" class="button add-to-cart" data-id=${item.id}>Add to Cart</a></p>
+                                        <p><a href="#" onclick="M.toast({html: 'Product added'})" class="waves-effect waves-light btn add-to-cart" data-id=${item.id}>buy</a></p>
                                     </div>
                                     <div class="card-reveal">
                                         <span class="card-title grey-text text-darken-4">${item.name}<i class="material-icons right">close</i></span>
@@ -44,7 +44,8 @@ var shoppingCart = (function () {
     cartEl.innerHTML = '';
     productsInCart.forEach(function (item) {
       var li = document.createElement('li');
-      li.innerHTML = `${item.quantity} ${item.product.name} - $${item.product.price * item.quantity}`;
+      li.className = 'collection-item';
+      li.innerHTML = `<span class="product-quantity">${item.quantity}</span> - <span class="product-name">${item.product.name}</span> - <span class="product-total">$${item.product.price * item.quantity}</span><span class="product-remove"><i class="material-icons">clear</i></span>`;
       cartEl.appendChild(li);
       countElement.classList.add('badge');
     });

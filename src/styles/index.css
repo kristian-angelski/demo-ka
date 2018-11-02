@@ -34,7 +34,7 @@ a {
 }
 
 .header nav div.nav-wrapper a.brand-logo {
-  padding-left: 15px;
+  padding-left: 40px;
 }
 
 .products {
@@ -72,20 +72,6 @@ a {
 .cart-checkout {
   display: none;
 
-}
-
-.empty-cart-btn {
-  margin-bottom: 5px;
-  display: inline-block;
-}
-
-.cart-checkout {
-  background: limegreen;
-  display: inline-block;
-}
-
-.hidden {
-  display: none;
 }
 
 /* item counter in cart */
