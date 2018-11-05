@@ -10,6 +10,7 @@ let shoppingCart = (function () {
     emptyCartEl = document.querySelector('.empty-cart-btn'),
     cartCheckoutEl = document.querySelector('.cart-checkout'),
     totalPriceEl = document.querySelector('.total-price');
+  let cartBtns = document.querySelector('.cart-buttons');
   let countElement = document.querySelector('.cart-sel');
   let counter = 0;
   let productsInCart = [];
@@ -43,7 +44,6 @@ let shoppingCart = (function () {
   // Like one before and I have also used ES6 template strings
   let generateCartList = function () {
     cartEl.innerHTML = '';
-    // console.log(productsInCart);
     productsInCart.forEach(function (item) {
       let tr = document.createElement('tr');
       tr.innerHTML = `
@@ -65,12 +65,10 @@ let shoppingCart = (function () {
   // Function that generates Empty Cart and Checkout buttons based on condition that checks if productsInCart array is empty
   let generateCartButtons = function () {
     if (productsInCart.length > 0) {
-      emptyCartEl.style.display = 'inline-block';
-      cartCheckoutEl.style.display = 'inline-block';
+      cartBtns.classList.remove('hide');
       totalPriceEl.innerHTML = '$ ' + calculateTotalPrice();
     } else {
-      emptyCartEl.style.display = 'none';
-      cartCheckoutEl.style.display = 'none';
+      cartBtns.classList.add('hide');
     }
   };
 
@@ -131,8 +129,6 @@ let shoppingCart = (function () {
   // // Functions called from cart
   // // Removing one item when '-' gets clicked
   let reduceItemCount = function (id) {
-    let rmvBtn = document.querySelector('.remove-btn');
-
     for (let i = 0; i < productsInCart.length; i++) {
       if (productsInCart[i].product.id === id) {
         productsInCart[i].quantity--;
@@ -151,8 +147,6 @@ let shoppingCart = (function () {
 
   // Adding one item when '+' gets clicked
   let increaseItemCount = (function (id) {
-    let addBtn = document.querySelector('.add-btn');
-
     for (let i = 0; i < productsInCart.length; i++) {
       if (productsInCart[i].product.id === id) {
         productsInCart[i].quantity++;
@@ -165,8 +159,6 @@ let shoppingCart = (function () {
 
   // Removing all items of a kind when 'x" gets clicked
   let removeAll = function (id) {
-    let clearBtn = document.querySelector('.clear-btn');
-
     for (let i = 0; i < productsInCart.length; i++) {
       if (productsInCart[i].product.id === id) {
         let removeFromCounter = productsInCart[i].quantity;
@@ -184,6 +176,7 @@ let shoppingCart = (function () {
   // This functon starts the application
   let init = function () {
     generateProductList();
+    generateCartButtons();
     setupListeners();
   };
 
