@@ -9,27 +9,38 @@
 </head>
 
 <body>
-  <div class="container">
-    <header class="header">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo"><i class="material-icons">fingerprint</i></a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down nav-btns">
-            <li><a href="#">Home</a></li>
-            <li><a href="#" class="products-btn">Products</a></li>
-            <li><a href="#">Contacts</a></li>
-            <li><a href="#" class="cart-btn"><i class="material-icons cart-sel">shopping_cart</i></a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
+  <header class="header">
+    <nav>
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo"><i class="material-icons">fingerprint</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down nav-btns">
+          <li><a href="#">Home</a></li>
+          <li><a href="#" class="products-btn">Products</a></li>
+          <li><a href="#" class="contacts-btn">Contacts</a></li>
+          <li><a href="#" class="cart-btn"><i class="material-icons cart-sel">shopping_cart</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container main">
     <div class="products hide">
     </div><!-- products -->
-    <div class="shopping-cart hide">
-      <div class="shopping-cart-head">
-        <span class="product-quantity">0</span> Product(s) in Cart
+
+    <div class="contacts hide">
+
+      <div class="map">
+          <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=bul%20bulgaria%2049b&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net"></a></div><style>.mapouter{text-align:right;height:400px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:600px;}</style></div>
       </div>
+    </div><!-- contacts -->
+
+    <div class="shopping-cart hide">
+      <div class="order-box">
+        <div class="card-panel teal lighten-2 left">
+          <span class="product-quantity">0</span> product(s) in cart
+        </div>
+      </div>
+      <!--order box-->
+
       <table class="highlight centered">
         <thead>
           <tr>
@@ -43,11 +54,13 @@
         <tbody class="shopping-cart-list">
         </tbody>
       </table>
-      <div class="cart-buttons hide">
+      <div class="cart-buttons">
         <a href="#0" class="waves-effect waves-light btn empty-cart-btn">Empty</a>
         <a href="#0" class="waves-effect waves-light btn cart-checkout">Checkout - <span class="total-price">$0</span></a>
-      </div>
-    </div>
+      </div><!-- cart-buttons -->
+
+    </div> <!-- shopping-cart-->
+
   </div><!-- container -->
 </body>
 

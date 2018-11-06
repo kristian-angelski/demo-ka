@@ -1,3 +1,6 @@
+// import {
+//   getProducts
+// } from './products.js';
 import productsArr from './products.js';
 
 let shoppingCart = (function () {
@@ -34,8 +37,7 @@ let shoppingCart = (function () {
               <span class="card-title grey-text text-darken-4">${item.name}<i class="material-icons right">close</i></span>
               <p>Description: ${item.description}</p>
           </div>
-      </div>
-    </div>`;
+      </div>`;
 
       productsEl.appendChild(productEl);
     });
@@ -47,16 +49,17 @@ let shoppingCart = (function () {
     productsInCart.forEach(function (item) {
       let tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${item.product.name}</td>
-        <td>$${item.product.price}</td>
-        <td>$${item.product.price * item.quantity}</td>
-        <td><a href="#"><i class="material-icons remove-btn" onClick="reduceItemCount(${item.product.id})">remove</i></a>${item.quantity}<a href="#"><i class="material-icons add-btn" onClick="increaseItemCount(${item.product.id})">add</i></a></td>
-        <td><a href="#"><i class="material-icons clear-btn" onClick="removeAll(${item.product.id})">clear</i></a></td>
+          <td>${item.product.name}</td>
+          <td>$${item.product.price}</td>
+          <td>$${item.product.price * item.quantity}</td>
+          <td><a href="#"><i class="material-icons remove-btn" onClick="reduceItemCount(${item.product.id})">remove</i></a>${item.quantity}<a href="#"><i class="material-icons add-btn" onClick="increaseItemCount(${item.product.id})">add</i></a></td>
+          <td><a href="#"><i class="material-icons clear-btn" onClick="removeAll(${item.product.id})">clear</i></a></td>
+        </tr>
       `;
       cartEl.appendChild(tr);
       countElement.classList.add('badge');
     });
-    
+
     countElement.setAttribute('data-count', counter);
     productQuantityEl.innerHTML = counter;
     generateCartButtons();
@@ -135,7 +138,7 @@ let shoppingCart = (function () {
         counter--;
         if (productsInCart[i].quantity === 0) {
           productsInCart.splice(i, 1);
-          if ( counter === 0 ) {
+          if (counter === 0) {
             countElement.classList.remove('badge');
           }
         }
@@ -164,7 +167,7 @@ let shoppingCart = (function () {
         let removeFromCounter = productsInCart[i].quantity;
         counter -= removeFromCounter;
         productsInCart.splice(i, 1);
-        if ( counter === 0 ) {
+        if (counter === 0) {
           countElement.classList.remove('badge');
         }
       }
