@@ -25,7 +25,7 @@ body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
-  background: $clean;
+  // background: $clean;
   color: $black;
 }
 
@@ -38,18 +38,37 @@ a {
 }
 
 .header nav {
-  background-color: $black;
+  background-color: $sunshine;
+}
+
+.header nav div li {
+  a {
+    font-weight: bold;
+  }
 }
 
 .header nav div li:hover {
-  background-color: $grey;
-  color: $ochre;
+  background-color: $vermillion;
+  a {
+    color: $black;
+    // font-weight: bold;
+  }
 }
 
-.main {
-  height: 100vh;
-  // background-color: $fresh;
+.home {
+  height: 500px;
+  background-image: url('../images/home-img.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  h3 {
+    color: $vermillion;
+    font-weight: bold;
+    margin: 0 auto;
+    font-family: 'Courier New', Courier, monospace;
+  }
 }
+
 
 .products {
   display: flex;

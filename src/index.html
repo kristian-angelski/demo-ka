@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>KA's demo</title>
 </head>
@@ -12,9 +14,9 @@
   <header class="header">
     <nav>
       <div class="nav-wrapper container">
-        <a href="#" class="brand-logo"><i class="material-icons">fingerprint</i></a>
+        <a href="#" class="brand-logo">store_name</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down nav-btns">
-          <li><a href="#">Home</a></li>
+          <li><a href="#" class="home-btn">Home</a></li>
           <li><a href="#" class="products-btn">Products</a></li>
           <li><a href="#" class="contacts-btn">Contacts</a></li>
           <li><a href="#" class="cart-btn"><i class="material-icons cart-sel">shopping_cart</i></a></li>
@@ -23,13 +25,36 @@
     </nav>
   </header>
   <div class="container main">
+    <div class="home valign-wrapper"> 
+      <h3>
+        Welcome to store_name
+      </h3>
+    </div><!-- home -->
+
     <div class="products hide">
     </div><!-- products -->
 
     <div class="contacts hide">
 
       <div class="map">
-          <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=bul%20bulgaria%2049b&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net"></a></div><style>.mapouter{text-align:right;height:400px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:600px;}</style></div>
+        <div class="mapouter">
+          <div class="gmap_canvas"><iframe width="600" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=bul%20bulgaria%2049b&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net"></a></div>
+          <style>
+            .mapouter {
+              text-align: right;
+              height: 400px;
+              width: 600px;
+            }
+
+            .gmap_canvas {
+              overflow: hidden;
+              background: none !important;
+              height: 400px;
+              width: 600px;
+            }
+          </style>
+        </div>
       </div>
     </div><!-- contacts -->
 
@@ -59,7 +84,7 @@
         <a href="#0" class="waves-effect waves-light btn cart-checkout">Checkout - <span class="total-price">$0</span></a>
       </div><!-- cart-buttons -->
 
-    </div> <!-- shopping-cart-->
+    </div> <!-- shopping-cart -->
 
   </div><!-- container -->
 </body>
