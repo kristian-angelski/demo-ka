@@ -18,7 +18,6 @@ $grey: #CDCDCD;
   margin: 0px auto;
 }
 
-
 body {
   height: 100vh;
   margin: 0;
@@ -49,10 +48,6 @@ a {
 
 .header nav div li:hover {
   background-color: $vermillion;
-  a {
-    color: $black;
-    // font-weight: bold;
-  }
 }
 
 .home {
@@ -69,7 +64,6 @@ a {
   }
 }
 
-
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -85,7 +79,7 @@ a {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
-  background: $pastel;
+  background: $clean;
 }
 
 .card-image {
@@ -97,13 +91,6 @@ a {
   display: block;
   color: $fresh;
 }
-
-/* 
-.order-box::after {
-  content: "";
-  display: table;
-  clear: both;
-} */
 
 /* item counter in cart */
 i {
@@ -149,14 +136,33 @@ table {
 }
 
 .contacts {
-  border: 1px dotted greenyellow;
-  height: calc(100vh - 100px);
-  position: relative;
+  // border: 1px dotted greenyellow;
+  // height: calc(100vh - 100px);
+  display: grid;
+}
 
+.contacts-img {
+  // todo
+  height: 500px;
+  background-image: url('../images/contact-us.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .map {
-  position: absolute;
-  bottom: 100px;
-  right: 0px;
+  margin-bottom: 20px;
+}
+
+.mapouter {
+  text-align: right;
+  height: 400px;
+  width: 600px;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 400px;
+  width: 600px;
 }

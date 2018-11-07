@@ -1,6 +1,3 @@
-// import {
-//   getProducts
-// } from './products.js';
 import productsArr from './products.js';
 
 let shoppingCart = (function () {
