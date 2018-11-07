@@ -28,7 +28,7 @@ let shoppingCart = (function () {
           </div>
           <div class="card-content">
               <span class="card-title activator grey-text text-darken-4">${item.name} - $${item.price}<i class="material-icons right">more_vert</i></span>
-              <p><a href="#" onclick="M.toast({html: 'Product added'})" class="waves-effect waves-light btn add-to-cart" data-id=${item.id}>buy</a></p>
+              <p><a href="#" onclick="M.toast({html: '${item.name} added', classes: 'rounded'})" class="waves-effect waves-light btn add-to-cart" data-id=${item.id}>buy</a></p>
           </div>
           <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">${item.name}<i class="material-icons right">close</i></span>
