@@ -159,13 +159,15 @@ let shoppingCart = (function () {
 
   // Removing all items of a kind when 'x" gets clicked
   let removeAll = function (id) {
-    for (let i = 0; i < productsInCart.length; i++) {
-      if (productsInCart[i].product.id === id) {
-        let removeFromCounter = productsInCart[i].quantity;
-        counter -= removeFromCounter;
-        productsInCart.splice(i, 1);
-        if (counter === 0) {
-          countElement.classList.remove('badge');
+    if (confirm('Are you sure?')) {
+      for (let i = 0; i < productsInCart.length; i++) {
+        if (productsInCart[i].product.id === id) {
+          let removeFromCounter = productsInCart[i].quantity;
+          counter -= removeFromCounter;
+          productsInCart.splice(i, 1);
+          if (counter === 0) {
+            countElement.classList.remove('badge');
+          }
         }
       }
       generateCartList();
