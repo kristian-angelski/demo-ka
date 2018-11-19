@@ -22,7 +22,7 @@ let shoppingCart = (function () {
       let productEl = document.createElement('div');
       productEl.className = 'product';
       productEl.innerHTML = ` 
-         <div class="card hoverable">
+         <div class="card hoverable z-depth-2">
           <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="${item.imageUrl}">
           </div>
